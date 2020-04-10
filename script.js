@@ -1,33 +1,51 @@
-function updateText() {
+//TODO: Convert all functions and any other possible elements to ES6
+
+/**
+ * Update the output text as you type in the textarea
+ */
+updateText = () => {
   let text = document.getElementById("text-input").value;
   document.getElementById("text-output").innerText = text;
-}
+};
 
-function makeBold(elem) {
+/**
+ * Toggle the bold class for the output text
+ */
+makeBold = (elem) => {
   elem.classList.toggle("active");
   document.getElementById("text-output").classList.toggle("bold");
-}
+};
 
-function makeItalic(elem) {
+/**
+ * Toggle the italic class for the output text
+ */
+makeItalic = (elem) => {
   elem.classList.toggle("active");
   document.getElementById("text-output").classList.toggle("italic");
-}
+};
 
-function makeUnderline(elem) {
+/**
+ * Toggle the underline class for the output text
+ */
+makeUnderline = (elem) => {
   elem.classList.toggle("active");
-  let formattedText = document.getElementById("text-output");
-  if (formattedText.classList.contains("underline")) {
-    formattedText.classList.remove("underline");
+  let output = document.getElementById("text-output");
+  if (output.classList.contains("underline")) {
+    output.classList.remove("underline");
   } else {
-    formattedText.classList.add("underline");
+    output.classList.add("underline");
   }
-}
+};
 
-function alignText(elem, alignType) {
+/**
+ * Toggle the style textAlign attribute
+ * Toggle the active state for the align butttons
+ */
+alignText = (elem, alignType) => {
   document.getElementById("text-output").style.textAlign = alignType;
-  let buttonsList = document.getElementsByClassName("align");
-  for (let i = 0; i < buttonsList.length; i++) {
-    buttonsList[i].classList.remove("active");
+  let alignButtons = document.getElementsByClassName("align");
+  for (let button of alignButtons) {
+    button.classList.remove("active");
   }
-  elem.classList.add("active");
-}
+  elem.classList.toggle("active");
+};
